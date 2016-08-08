@@ -432,11 +432,19 @@ func (s *Session) Execute(javscript string) error {
 func (s *Session) ExecuteAsync(javscript string) error {
 	// POST execute_async
 }
+*/
 
 func (s *Session) ScreenShot() ([]byte, error) {
-	// GET screenshot + decode
+	var data string
+
+	if err := s.c.get(s.path("/screenshot"), &data); err != nil {
+		return nil, err
+	}
+
+	return []byte(data), nil
 }
 
+/*
 func (s *Session) IMEs() ([]*IME, error) {
 	// GET ime/available_engines
 }
